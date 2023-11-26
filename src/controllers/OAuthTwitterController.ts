@@ -22,14 +22,11 @@ twitterRouter.get(
   '/',
   async (req: Request, res: Response, next) => {
     const isWidget = req.query.isWidget;
+    const origin = req.query.origin;
+    console.log("isWidget: "+isWidget);
+    console.log("origin: "+origin);
     let callback = "";
-    if (isWidget == "true") {
-      callback = `${process.env.TWITTER_CALLBACK_URL}?isWidget=true` 
-    }
-    else {
-      callback = `${process.env.TWITTER_CALLBACK_URL}?isWidget=false` 
-
-    }
+    callback = `${process.env.TWITTER_CALLBACK_URL}?isWidget=${isWidget}&origin=${origin}`;
       // Use the Twitter OAuth2 strategy within Passport
     passport.use(
       // Strategy initialization
@@ -66,15 +63,15 @@ twitterRouter.get(
     console.log(o.username);
     console.log(o.displayName);
     const isWidget = req.query.isWidget;
+    const origin = req.query.origin;
+
     if (isWidget == "true")
-      res.redirect(`${process.env.WIDGET_UI_URL}?isWidget=${req.query.isWidget}&id_platform=twitter&username=${o.username}&display_name=${o.displayName}`);
+      res.redirect(`${process.env.WIDGET_UI_URL}?isWidget=${req.query.isWidget}&origin=${origin}&id_platform=twitter&username=${o.username}&display_name=${o.displayName}`);
     else if (isWidget == "false")
-      res.redirect(`${process.env.DASHBOARD_UI_URL}?isWidget=${req.query.isWidget}&id_platform=twitter&username=${o.username}&display_name=${o.displayName}`);
+      res.redirect(`${process.env.DASHBOARD_UI_URL}?isWidget=${req.query.isWidget}&origin=${origin}&id_platform=twitter&username=${o.username}&display_name=${o.displayName}`);
     else {
       console.log("Did not find the isWidget parameter in callback. Redirecting to default dashboard");
-      res.redirect(`${process.env.DASHBOARD_UI_URL}?isWidget=${req.query.isWidget}&id_platform=twitter&username=${o.username}&display_name=${o.displayName}`);
-
+      res.redirect(`${process.env.DASHBOARD_UI_URL}?isWidget=${req.query.isWidget}&origin=${origin}&id_platform=twitter&username=${o.username}&display_name=${o.displayName}`);
     }
-      
   }
 );
