@@ -62,16 +62,18 @@ twitterRouter.get(
     const o : any = JSON.parse(userData);
     console.log(o.username);
     console.log(o.displayName);
+    console.log(o.photos[0].value);
     const isWidget = req.query.isWidget;
     const origin = req.query.origin;
+    const profile_pic=o.photos[0].value;
 
     if (isWidget == "true")
-      res.redirect(`${process.env.WIDGET_UI_URL}?isWidget=${req.query.isWidget}&origin=${origin}&id_platform=twitter&username=${o.username}&display_name=${o.displayName}`);
+      res.redirect(`${process.env.WIDGET_UI_URL}?isWidget=${req.query.isWidget}&origin=${origin}&id_platform=twitter&username=${o.username}&display_name=${o.displayName}&picture_url=${profile_pic}`);
     else if (isWidget == "false")
-      res.redirect(`${process.env.DASHBOARD_UI_URL}?isWidget=${req.query.isWidget}&origin=${origin}&id_platform=twitter&username=${o.username}&display_name=${o.displayName}`);
+      res.redirect(`${process.env.DASHBOARD_UI_URL}?isWidget=${req.query.isWidget}&origin=${origin}&id_platform=twitter&username=${o.username}&display_name=${o.displayName}&picture_url=${profile_pic}`);
     else {
       console.log("Did not find the isWidget parameter in callback. Redirecting to default dashboard");
-      res.redirect(`${process.env.DASHBOARD_UI_URL}?isWidget=${req.query.isWidget}&origin=${origin}&id_platform=twitter&username=${o.username}&display_name=${o.displayName}`);
+      res.redirect(`${process.env.DASHBOARD_UI_URL}?isWidget=${req.query.isWidget}&origin=${origin}&id_platform=twitter&username=${o.username}&display_name=${o.displayName}&picture_url=${profile_pic}`);
     }
   }
 );
