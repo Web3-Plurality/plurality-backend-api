@@ -15,4 +15,6 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file Dockerfile --tag pluralitydev/plurality-backend-api:latest
     - name: Publish the Docker image
-      run: docker push pluralitydev/plurality-backend-api:latest
+      run: |
+        docker login -u pluralitydev -p ${{ secrets.DOCKER_HUB_TOKEN }}
+        docker push pluralitydev/plurality-backend-api:latest
