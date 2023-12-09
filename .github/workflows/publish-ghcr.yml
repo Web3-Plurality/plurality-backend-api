@@ -14,4 +14,4 @@ jobs:
       run: |
         docker build . --file Dockerfile --tag ghcr.io/web3-plurality/plurality-backend-api:latest
         docker login --username ${{ secrets.GHCR_USERNAME }} --password ${{ secrets.GHCR_TOKEN }} ghcr.io
-        docker push ghcr.io/web3-plurality/plurality-backend-api-ghcr:latest
+        docker push ghcr.io/web3-plurality/plurality-backend-api:latest
