@@ -1,6 +1,6 @@
 {
   "name": "api",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
@@ -41,6 +41,10 @@
   },
   "dependencies": {
     "@bundlr-network/client": "^0.11.17",
+    "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^9.2.6",
+    "@semantic-release/npm": "^11.0.2",
     "@superfaceai/passport-twitter-oauth2": "^1.2.3",
     "arweave": "^1.14.4",
     "axios": "^1.5.0",
