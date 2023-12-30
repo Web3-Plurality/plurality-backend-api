@@ -1,8 +1,10 @@
-FROM node:18
+FROM node:20
 RUN mkdir /app
 WORKDIR /app
 COPY package.json /app
-COPY yarn.lock /app
-RUN yarn install
+COPY package-lock.json /app
+RUN npm install
 COPY . /app
-CMD ["yarn", "start"]
+RUN npm run build
+RUN npm install -g serve
+CMD ["serve", "-s", "build"]

@@ -7,11 +7,11 @@ Backend API to support dashboard and widget workflows
 1. Install dependencies
 
 ```
-yarn install
+npm install
 ```
 
 2. Run
 
 ```
-yarn start
+npm run start
 ```

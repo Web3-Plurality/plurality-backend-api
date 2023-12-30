@@ -30,3 +30,7 @@ yarn-error.log*
 
 # env
 .env
+
+yarn.lock
+
+dist
